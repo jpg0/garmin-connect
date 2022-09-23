@@ -347,10 +347,10 @@ class GarminConnect {
         }
         
         let stream;
-        if(typeof file === 'ArrayBuffer') {
-            stream = require('stream').Readable.from(file);
+        if(file instanceof ArrayBuffer) {
+            stream = require('stream').Readable.from([new Uint8Array(file)]);
         } else {
-            stream = fs.createReadStream(file);
+            stream = require('fs').createReadStream(file);
         }
         
         return this.client.post(urls.upload(format), {

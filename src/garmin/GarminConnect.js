@@ -340,7 +340,6 @@ class GarminConnect {
      * @returns {Promise<*>}
      */
     async uploadActivity(file, format) {
-                throw new Error('uploadActivity method is disabled in this version');
 
         const detectedFormat = format || `.${file.split('.').pop()}`;
         if (detectedFormat !== '.gpx' && detectedFormat !== '.tcx' && detectedFormat !== '.fit') {
